@@ -18,7 +18,7 @@ namespace NZWalksAPI.Repositories
             return await dbContext.Regions.ToListAsync();
         }
 
-        public async Task<Region> GetByIdAsync(Guid id)
+        public async Task<Region?> GetByIdAsync(Guid id)
         {
             return await dbContext.Regions.FirstOrDefaultAsync(r => r.Id == id);
 
@@ -31,7 +31,7 @@ namespace NZWalksAPI.Repositories
             return region;
         }
 
-        async Task<Region?> UpdateRegionAsync(Guid id, Region region)
+        public async Task<Region?> UpdateRegionAsync(Guid id, Region region)
         {
             var existingRegion = await dbContext.Regions.FirstOrDefaultAsync(r => r.Id == id);
 
@@ -48,7 +48,7 @@ namespace NZWalksAPI.Repositories
             return existingRegion;
         }
 
-        async Task<Region?> DeleteAsync(Guid id)
+        public async Task<Region?> DeleteAsync(Guid id)
         {
             var existingRegion = await dbContext.Regions.FirstOrDefaultAsync(r => r.Id == id);
 
